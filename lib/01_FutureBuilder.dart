@@ -36,10 +36,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
- Future <void> _incrementCounter() async{
-  await Future.delayed(const Duration(seconds: 2 ));
-   setState(()  {
-        _counter++;
+  Future <void> _incrementCounter() async{
+    await Future.delayed(const Duration(seconds: 2 ));
+    setState(()  {
+      _counter++;
     });
   }
 
@@ -58,17 +58,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: Text(widget.title),
       ),
-      body:  Center(
+      body: Center(
 
         child: Column(
 
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-             Text(
-        'You have pushed the button this many times:'
-                ),
-
-
+            FutureBuilder<String >(
+                future: getData(),
+                builder: (context, snapshot) {
+                  if(snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  final data = snapshot.data!;
+                  return  Text(
+                    data,
+                  );
+                }
+            ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
