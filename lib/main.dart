@@ -37,11 +37,15 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
  Future <void> _incrementCounter() async{
-  await Future.delayed(Duration(seconds: 2 ));
+  await Future.delayed(const Duration(seconds: 2 ));
    setState(()  {
         _counter++;
     });
+  }
 
+  Future<String> getData() async {
+    await Future.delayed(const Duration(seconds: 2 ));
+    return 'You have pushed the button this many times:';
   }
 
   @override
@@ -60,8 +64,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            FutureBuilder<String >(
+              future: getData(),
+              builder: (context, snapshot) {
+                if(snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                final data = snapshot.data!;
+                return  Text(
+                 data,
+                );
+              }
             ),
             Text(
               '$_counter',
