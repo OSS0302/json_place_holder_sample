@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:json_place_holder_sample/02_http_sample_screen.dart';
+import 'package:json_place_holder_sample/04_stateful_future_builder.dart';
 
 import '03_stateful_future.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: StatefulFutureScreen(),
+      home: StatefulFutureBuilderScreen(),
     );
   }
 }
