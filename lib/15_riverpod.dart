@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:json_place_holder_sample/00_sample.dart';
 
+import 'http_sample_state.dart';
+
 // 21-Riverpod
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -75,22 +77,3 @@ final modelNotifierProvider =
 NotifierProvider<HttpSampleModel, HttpSampleState>(HttpSampleModel.new);
 
 // State
-class HttpSampleState {
-  final String title;
-  final String body;
-
-  HttpSampleState({
-    this.title = '',
-    this.body = 'Loading',
-  });
-
-  HttpSampleState copyWith({
-    String? title,
-    String? body,
-  }) {
-    return HttpSampleState(
-      title: title ?? this.title,
-      body: body ?? this.body,
-    );
-  }
-}

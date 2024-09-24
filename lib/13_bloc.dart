@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 import 'data/02_http_api.dart';
+import 'http_sample_state.dart';
 
 // 19-Bloc
 void main() {
@@ -77,23 +78,3 @@ class HttpSampleModel extends Cubit<HttpSampleState> {
   }
 }
 
-// State
-class HttpSampleState {
-  final String title;
-  final String body;
-
-  HttpSampleState({
-    this.title = '',
-    this.body = 'Loading',
-  });
-
-  HttpSampleState copyWith({
-    String? title,
-    String? body,
-  }) {
-    return HttpSampleState(
-      title: title ?? this.title,
-      body: body ?? this.body,
-    );
-  }
-}

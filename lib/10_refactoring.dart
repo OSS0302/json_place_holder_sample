@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'data/02_http_api.dart';
+import 'http_sample_state.dart';
 
-// 15-InheritedWidget 활용을 하기 위한 코드 구조 변경
 void main() {
   runApp(MyApp());
 }
@@ -78,27 +78,6 @@ class HttpSampleModel extends ValueNotifier<HttpSampleState> {
     value = value.copyWith(
       title: jsonMap['title'],
       body: jsonMap['body'],
-    );
-  }
-}
-
-// State
-class HttpSampleState {
-  final String title;
-  final String body;
-
-  HttpSampleState({
-    this.title = '',
-    this.body = 'Loading',
-  });
-
-  HttpSampleState copyWith({
-    String? title,
-    String? body,
-  }) {
-    return HttpSampleState(
-      title: title ?? this.title,
-      body: body ?? this.body,
     );
   }
 }

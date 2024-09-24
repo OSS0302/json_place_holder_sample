@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:json_place_holder_sample/data/02_http_api.dart';
+import 'package:json_place_holder_sample/http_sample_state.dart';
 
 class ModelSetState extends StatefulWidget {
   const ModelSetState({super.key});
@@ -77,23 +78,3 @@ class HttpSampleModel extends ValueNotifier<HttpSampleState> {
   }
 }
 
-// State
-class HttpSampleState {
-  final String title;
-  final String body;
-
-  HttpSampleState({
-    this.title = '',
-    this.body = 'Loading',
-  });
-
-  HttpSampleState copyWith({
-    String? title,
-    String? body,
-  }) {
-    return HttpSampleState(
-      title: title ?? this.title,
-      body: body ?? this.body,
-    );
-  }
-}

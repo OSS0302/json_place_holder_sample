@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'data/02_http_api.dart';
+import 'http_sample_state.dart';
 
 
 void main() {
@@ -73,23 +74,3 @@ class HttpSampleModel extends GetxController {
   }
 }
 
-// State
-class HttpSampleState {
-  final String title;
-  final String body;
-
-  HttpSampleState({
-    this.title = '',
-    this.body = 'Loading',
-  });
-
-  HttpSampleState copyWith({
-    String? title,
-    String? body,
-  }) {
-    return HttpSampleState(
-      title: title ?? this.title,
-      body: body ?? this.body,
-    );
-  }
-}
