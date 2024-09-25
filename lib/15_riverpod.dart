@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:json_place_holder_sample/00_sample.dart';
 
+import 'http_sample_model.dart';
 import 'http_sample_state.dart';
 
 // 21-Riverpod
@@ -50,30 +51,5 @@ class HttpSampleScreen extends ConsumerWidget {
   }
 }
 
-// Model (상태 & 로직)
-class HttpSampleModel extends Notifier<HttpSampleState> {
-  HttpSampleModel() {
-    fetchData();
-  }
 
-  @override
-  HttpSampleState build() => HttpSampleState();
 
-  // 로직
-  void fetchData() async {
-    final jsonString = await getData();
-
-    final jsonMap = jsonDecode(jsonString) as Map;
-
-    // 상태 변경
-    state = state.copyWith(
-      title: jsonMap['title'],
-      body: jsonMap['body'],
-    );
-  }
-}
-
-final modelNotifierProvider =
-NotifierProvider<HttpSampleModel, HttpSampleState>(HttpSampleModel.new);
-
-// State
